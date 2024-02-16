@@ -18,8 +18,6 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showLoadingModal, setShowLoadingModal] = useState(false);
-//   const [searchHistory, setSearchHistory] = useState([]);
-
 
   const [filters, setFilters] = useState({
     title: "fast",
@@ -134,15 +132,12 @@ const App = () => {
   const searchMovies = async (searchValue) => {
     try {
 		setShowLoadingModal(true)
-		// console.log('yes')
+		
       const response = await getFastMovies(searchValue);
       setFilters({...filters, title:searchValue});
 	  console.log('res', response)
       setFastMovies(response.data.data);
-	//   setSearchHistory((prevHistory) => {
-	// 	const newHistory = [searchValue, ...prevHistory.slice(0, 4)];
-	// 	return Array.from(new Set(newHistory));
-	//   });
+
 	  return setShowLoadingModal(false)
     } catch (error) {
       console.log(error);
